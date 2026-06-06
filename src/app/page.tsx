@@ -10,9 +10,8 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import CTASection from "@/components/CTASection";
-import ContactCTA from "@/components/ContactCTA";
+
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ScrollProgress from "@/components/ScrollProgress";
 import MouseGlow from "@/components/MouseGlow";
 import FloatingDashboard from "@/components/FloatingDashboard";
@@ -48,14 +47,12 @@ return ( <main> <ScrollProgress />
 
   <CTASection />
 
-  <ContactCTA />
+
 
   <Footer />
   <FloatingDashboard />
   <Spotlight />
 <MouseGlow />
-
-  <FloatingWhatsApp />
 </main>
 
 );

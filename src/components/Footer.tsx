@@ -5,6 +5,7 @@ import {
   Instagram,
   Linkedin,
   Youtube,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,7 +20,7 @@ export default function Footer() {
         <span className="absolute left-0 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-cyan-400 font-bold">
           &gt;
         </span>
-        <span className="group-hover:font-bold transition-all duration-300">
+        <span className="group-hover:font-bold transition-all duration-300 whitespace-nowrap">
           {label}
         </span>
       </Link>
@@ -60,11 +61,11 @@ export default function Footer() {
 
     <div className="container-custom relative z-10">
 
-      <div className="grid lg:grid-cols-5 gap-12">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
 
         {/* Brand */}
 
-        <div className="lg:col-span-2">
+        <div className="sm:col-span-2 lg:col-span-2">
 
           <Link href="/" className="inline-block hover:opacity-90 transition mb-2">
             <Image
@@ -96,25 +97,35 @@ export default function Footer() {
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/codemyfyp"
               className="glass p-3 rounded-xl hover:scale-110 transition"
             >
               <Instagram size={20} />
             </a>
 
             <a
-              href="#"
+              href="https://www.youtube.com/@codemyfyp"
               className="glass p-3 rounded-xl hover:scale-110 transition"
             >
               <Youtube size={20} />
             </a>
 
-            <Link
+            <a
               href="https://www.linkedin.com/company/codemyfyp"
               className="glass p-3 rounded-xl hover:scale-110 transition"
+              target="_blank"
             >
               <Linkedin size={20} />
-            </Link>
+            </a>
+
+            <a
+              href="https://chat.whatsapp.com/CAeLaCwCcAm3IBN1IaprWT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass p-3 rounded-xl hover:scale-110 hover:text-green-400 hover:border-green-400/30 transition-all"
+            >
+              <MessageCircle size={20} />
+            </a>
 
           </div>
 
@@ -150,6 +161,22 @@ export default function Footer() {
             {renderFooterLink("AI Solutions", "#services")}
             {renderFooterLink("Internship Programs", "#services")}
             {renderFooterLink("Academic Projects", "#services")}
+          </ul>
+
+        </div>
+
+        {/* Company */}
+
+        <div>
+
+          <h4 className="font-semibold text-lg mb-6">
+            Company
+          </h4>
+
+          <ul className="space-y-4">
+            {renderFooterLink("About Us", "/about")}
+            {renderFooterLink("Terms and Condition", "/terms-and-condition")}
+            {renderFooterLink("Contact", "/contact")}
           </ul>
 
         </div>
@@ -205,17 +232,21 @@ export default function Footer() {
 
         <div className="flex gap-8 text-gray-500">
 
-          <a href="#">
+          <Link href="/privacy-policy">
             Privacy Policy
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link href="/terms-and-condition">
             Terms of Service
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link href="/refund-policy">
+            Refund Policy
+          </Link>
+
+          <Link href="/cookie-policy">
             Cookie Policy
-          </a>
+          </Link>
 
         </div>
 

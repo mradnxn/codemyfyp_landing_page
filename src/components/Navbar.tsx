@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("");
   const [isLightMode, setIsLightMode] = useState(false);
 
@@ -50,19 +52,15 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = ["ecosystem", "services", "products", "portfolio", "contact"];
-    
+    const sections = ["ecosystem", "services", "products", "portfolio"];
+
     const handleScrollFallback = () => {
       if (window.scrollY < 100) {
         setActiveSection("");
         return;
       }
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-        setActiveSection("contact");
-        return;
-      }
     };
-    
+
     const observers = sections.map((id) => {
       const el = document.getElementById(id);
       if (!el) return null;
@@ -111,8 +109,8 @@ export default function Navbar() {
             justify-between
             shadow-xl
             transition-all duration-300
-            ${isLightMode 
-              ? "bg-[#050816]/90 border border-white/10" 
+            ${isLightMode
+              ? "bg-[#050816]/90 border border-white/10"
               : "bg-white/10 border border-white/15"
             }
           `}
@@ -144,48 +142,43 @@ export default function Navbar() {
           >
             <a
               href="#ecosystem"
-              className={`transition-colors duration-300 ${
-                activeSection === "ecosystem" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
-              }`}
+              className={`transition-colors duration-300 ${activeSection === "ecosystem" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
+                }`}
             >
               Ecosystem
             </a>
 
             <a
               href="#services"
-              className={`transition-colors duration-300 ${
-                activeSection === "services" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
-              }`}
+              className={`transition-colors duration-300 ${activeSection === "services" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
+                }`}
             >
               Services
             </a>
 
             <a
               href="#products"
-              className={`transition-colors duration-300 ${
-                activeSection === "products" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
-              }`}
+              className={`transition-colors duration-300 ${activeSection === "products" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
+                }`}
             >
               Products
             </a>
 
             <a
               href="#portfolio"
-              className={`transition-colors duration-300 ${
-                activeSection === "portfolio" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
-              }`}
+              className={`transition-colors duration-300 ${activeSection === "portfolio" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
+                }`}
             >
               Portfolio
             </a>
 
-            <a
-              href="#contact"
-              className={`transition-colors duration-300 ${
-                activeSection === "contact" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
-              }`}
+            <Link
+              href="/contact"
+              className={`transition-colors duration-300 ${pathname === "/contact" ? "text-cyan-400 font-semibold" : "text-gray-300 hover:text-white"
+                }`}
             >
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Right Side */}
